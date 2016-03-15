@@ -1,9 +1,16 @@
 package duranmla.stormy.weather;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class HourlyWeather {
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+import java.util.logging.SimpleFormatter;
+
+public class HourlyWeather implements Parcelable {
     private long mTime;
     private String mSummary;
     private double mTemperature;
@@ -34,8 +41,8 @@ public class HourlyWeather {
         mSummary = summary;
     }
 
-    public double getTemperature() {
-        return mTemperature;
+    public int getTemperature() {
+        return (int) Math.round(mTemperature);
     }
 
     public void setTemperature(double temperature) {
@@ -56,5 +63,49 @@ public class HourlyWeather {
 
     public void setTimezone(String timezone) {
         mTimezone = timezone;
+    }
+
+    public String getHour() {
+        SimpleDateFormat formatter = new SimpleDateFormat("h a");
+        formatter.setTimeZone(TimeZone.getTimeZone(mTimezone));
+        return formatter.format(mTime * 1000);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public HourlyWeather(Parcel source) {
+        mTime = source.readLong();
+        mSummary = source.readString();
+        mTemperature = source.readDouble();
+        mIcon = source.readString();
+        mTimezone = source.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(mTime);
+        dest.writeString(mSummary);
+        dest.writeDouble(mTemperature);
+        dest.writeString(mIcon);
+        dest.writeString(mTimezone);
+    }
+
+    public static final Creator<HourlyWeather> CREATOR = new Creator<HourlyWeather>() {
+        @Override
+        public HourlyWeather createFromParcel(Parcel source) {
+            return new HourlyWeather(source);
+        }
+
+        @Override
+        public HourlyWeather[] newArray(int size) {
+            return new HourlyWeather[size];
+        }
+    };
+
+    public int getIconId() {
+        return Forecast.getIconId(mIcon);
     }
 }

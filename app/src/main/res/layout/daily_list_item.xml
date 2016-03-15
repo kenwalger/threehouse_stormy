@@ -24,7 +24,8 @@
         android:src="@drawable/clear_day"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/circleImageView"
-        android:layout_toEndOf="@+id/circleImageView"/>
+        android:layout_toEndOf="@+id/circleImageView"
+        android:paddingLeft="15dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,7 +36,8 @@
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/iconImageView"
         android:layout_toEndOf="@+id/iconImageView"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:paddingLeft="15dp"/>
 
     <TextView
         android:layout_width="wrap_content"

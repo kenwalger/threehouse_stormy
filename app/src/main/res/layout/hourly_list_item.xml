@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:background="#ffaa00"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    android:paddingLeft="32dp"
+    android:paddingRight="32dp">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/iconImageView"
+        android:src="@drawable/partly_cloudy"
+        android:paddingLeft="15dp"
+        android:layout_alignParentTop="false"
+        android:layout_toRightOf="@+id/hourLabel"
+        android:layout_toEndOf="@+id/hourLabel"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Partly Cloudy"
+        android:id="@+id/hourSummaryLabel"
+        android:textColor="#ffffffff"
+        android:textSize="16sp"
+        android:paddingLeft="15dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/iconImageView"
+        android:layout_toEndOf="@+id/iconImageView"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12 PM"
+        android:id="@+id/hourLabel"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        android:id="@+id/hourTemperatureLabel"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"/>
+</RelativeLayout>
